@@ -7,12 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
+@Component
 public class CustomerRestClient {
-    RestClient client = RestClient.create();
+    @Autowired
+    RestClient.Builder builder;
 
-    //TODO: Don't forget error handling
     public ResponseEntity<Void> saveCustomer(Customer customer){
-        return client
+        return builder.build()
             .post()
             .uri("http://localhost:8080/customers")
             .contentType(MediaType.APPLICATION_JSON)

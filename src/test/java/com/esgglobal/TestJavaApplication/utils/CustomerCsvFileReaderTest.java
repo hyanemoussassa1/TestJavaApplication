@@ -1,7 +1,6 @@
 package com.esgglobal.TestJavaApplication.utils;
 
 import com.esgglobal.TestJavaApplication.model.Customer;
-import com.esgglobal.TestJavaApplication.utils.CustomerCsvFileReader;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -31,7 +30,7 @@ public class CustomerCsvFileReaderTest {
         String directoryPath = "src/test/resources";
         String fileName = "customers.csv";
         List<Customer> customers = customerCsvFileReader.parseFile(directoryPath, fileName);
-        assertEquals(1, customers.size());
+        assertEquals(2, customers.size());
         Customer customerFound = customers.get(0);
         assertEquals("REF_001", customerFound.getCustomerRef());
         assertEquals("Hyane Moussassa", customerFound.getCustomerName());

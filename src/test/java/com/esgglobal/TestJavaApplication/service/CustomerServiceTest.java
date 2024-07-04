@@ -8,10 +8,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.isA;
 
-@SpringBootTest
+@SpringBootTest(args = {"no-scanning"})
 public class CustomerServiceTest {
 
     @Mock

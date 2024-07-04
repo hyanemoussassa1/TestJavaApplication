@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CustomerCsvFileReader {
 
     CsvMapper csvMapper = new CsvMapper();

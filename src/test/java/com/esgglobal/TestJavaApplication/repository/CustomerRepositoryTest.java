@@ -5,6 +5,9 @@ import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,10 +25,10 @@ public class CustomerRepositoryTest {
         Customer customer = getCustomer();
         entityManager.persist(customer);
 
-        Customer findByCustomerRef =
+        Optional<Customer> findByCustomerRef =
                 customers.findByCustomerRef(customer.getCustomerRef());
 
-        assertThat(findByCustomerRef).extracting(Customer::getCustomerName)
+        assertThat(findByCustomerRef.get()).extracting(Customer::getCustomerName)
                 .isEqualTo(customer.getCustomerName());
     }
 

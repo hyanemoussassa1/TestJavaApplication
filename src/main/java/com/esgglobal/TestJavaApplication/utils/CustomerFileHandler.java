@@ -10,11 +10,14 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.List;
 
+@Component
 public class CustomerFileHandler {
 
-    CustomerCsvFileReader customerCsvFileReader = new CustomerCsvFileReader();
+    @Autowired
+    CustomerCsvFileReader customerCsvFileReader;
 
-    CustomerRestClient restClient = new CustomerRestClient();
+    @Autowired
+    CustomerRestClient restClient;
 
     public void handle(String directoryPath, String fileName) throws IOException {
         List<Customer> customers = customerCsvFileReader.parseFile(directoryPath, fileName);
