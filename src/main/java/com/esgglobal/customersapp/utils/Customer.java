@@ -1,4 +1,4 @@
-package com.esgglobal.TestJavaApplication.model;
+package com.esgglobal.customersapp.utils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

@@ -1,14 +1,13 @@
-package com.esgglobal.TestJavaApplication.dao;
+package com.esgglobal.customersapp.customer.dao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -20,19 +19,19 @@ public class Customer {
     private String county;
     private String country;
     private String postcode;
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", customerRef='" + customerRef + '\'' +
-                ", customerName='" + customerName + '\'' +
-                ", addressLine1='" + addressLine1 + '\'' +
-                ", addressLine2='" + addressLine2 + '\'' +
-                ", town='" + town + '\'' +
-                ", county='" + county + '\'' +
-                ", country='" + country + '\'' +
-                ", postcode='" + postcode + '\'' +
-                '}';
+
+    public Customer() {
+    }
+
+    public Customer(String customerRef, String customerName, String addressLine1, String addressLine2, String town, String county, String country, String postcode) {
+        this.customerRef = customerRef;
+        this.customerName = customerName;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.town = town;
+        this.county = county;
+        this.country = country;
+        this.postcode = postcode;
     }
 
     public UUID getId() {

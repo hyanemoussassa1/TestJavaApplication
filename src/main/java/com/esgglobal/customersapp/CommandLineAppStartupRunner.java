@@ -1,7 +1,7 @@
-package com.esgglobal.TestJavaApplication;
+package com.esgglobal.customersapp;
 
-import com.esgglobal.TestJavaApplication.utils.CustomerFileHandler;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.esgglobal.customersapp.utils.CustomerFileHandler;
+import lombok.AllArgsConstructor;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -10,14 +10,17 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Optional;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 @Component
+@AllArgsConstructor
 public class CommandLineAppStartupRunner implements ApplicationRunner {
 
-    @Autowired
     CustomerFileHandler fileHandler;
+    private static final Logger LOG = Logger.getLogger(CommandLineAppStartupRunner.class.getName());
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        LOG.info("Ready to start the command line app!");
         Optional<String> firstArg = Arrays.stream(args.getSourceArgs()).findFirst();
         boolean allowScanning = ! (firstArg.isPresent() && firstArg.get().equals("no-scanning"));
         if (allowScanning)

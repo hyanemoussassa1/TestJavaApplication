@@ -1,6 +1,6 @@
-package com.esgglobal.TestJavaApplication.restclient;
+package com.esgglobal.customersapp.restclient;
 
-import com.esgglobal.TestJavaApplication.controller.Customer;
+import com.esgglobal.customersapp.customer.dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

@@ -1,13 +1,13 @@
-package com.esgglobal.TestJavaApplication;
+package com.esgglobal.customersapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TestJavaApplication {
+public class CustomersApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TestJavaApplication.class, args);
+		SpringApplication.run(CustomersApp.class, args);
 	}
 
 }

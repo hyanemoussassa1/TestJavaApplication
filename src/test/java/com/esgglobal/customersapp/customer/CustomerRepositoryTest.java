@@ -1,11 +1,11 @@
-package com.esgglobal.TestJavaApplication.repository;
+package com.esgglobal.customersapp.customer;
 
-import com.esgglobal.TestJavaApplication.dao.Customer;
+import com.esgglobal.customersapp.customer.dao.Customer;
+import com.esgglobal.customersapp.customer.dao.CustomerRecord;
 import jakarta.persistence.EntityManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Optional;
 
@@ -22,23 +22,14 @@ public class CustomerRepositoryTest {
 
     @Test
     public void testFindByCustomerRef(){
-        Customer customer = getCustomer();
+        Customer customer = CustomerProducer.customerDao();
         entityManager.persist(customer);
 
-        Optional<Customer> findByCustomerRef =
+        Optional<CustomerRecord> findByCustomerRef =
                 customers.findByCustomerRef(customer.getCustomerRef());
 
-        assertThat(findByCustomerRef.get()).extracting(Customer::getCustomerName)
+        assertThat(findByCustomerRef.get()).extracting(CustomerRecord::customerName)
                 .isEqualTo(customer.getCustomerName());
-    }
-
-    private static Customer getCustomer() {
-        Customer customer = new Customer();
-        customer.setCustomerRef("REF_001");
-        customer.setCustomerName("name");
-        customer.setAddressLine1("addr1");
-        customer.setAddressLine2("addr2");
-        return customer;
     }
 
 }

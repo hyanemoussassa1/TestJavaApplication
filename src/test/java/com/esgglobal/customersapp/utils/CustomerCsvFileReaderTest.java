@@ -1,8 +1,10 @@
-package com.esgglobal.TestJavaApplication.utils;
+package com.esgglobal.customersapp.utils;
 
-import com.esgglobal.TestJavaApplication.model.Customer;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -11,11 +13,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CustomerCsvFileReaderTest {
+@ExtendWith(MockitoExtension.class)
+class CustomerCsvFileReaderTest {
+
+    @InjectMocks
+    CustomerCsvFileReader customerCsvFileReader;
 
     @Test
     void testThatThrowsFileNotFoundWhenFileDoesNotExist(){
-        CustomerCsvFileReader customerCsvFileReader = new CustomerCsvFileReader();
         String directoryPath = "src/test/resources";
         String fileName = "customer.csv";
         FileNotFoundException thrown = Assertions.assertThrows(FileNotFoundException.class,
@@ -26,7 +31,6 @@ public class CustomerCsvFileReaderTest {
 
     @Test
     void testThatMapperReturnsCorrectCustomer() throws IOException {
-        CustomerCsvFileReader customerCsvFileReader = new CustomerCsvFileReader();
         String directoryPath = "src/test/resources";
         String fileName = "customers.csv";
         List<Customer> customers = customerCsvFileReader.parseFile(directoryPath, fileName);
